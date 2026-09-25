@@ -25,7 +25,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'React', 'Tailwind CSS'],
     kind: 'website',
     visual: 'mezcal',
-    status: 'Finalizado',
+    status: 'En desarrollo',
     images: [
     { src: '/projects/campo_negro/01-campo-negro-inicio.png', alt: 'Inicio del sitio Campo Negro' },
     { src: '/projects/campo_negro/02-campo-negro-esencia.png', alt: 'Sección Nuestra esencia' },
