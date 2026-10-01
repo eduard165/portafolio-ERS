@@ -18,19 +18,39 @@ export function AboutSection() {
       <div>
         <p className="eyebrow">Sobre mí</p>
         <h2 id="about-title">
-          Curiosidad para aprender. Criterio para resolver.
+          Curiosidad para aprender Criterio para resolver
         </h2>
       </div>
 
       <div className="about-copy">
         <p>
-          Soy Eduardo Rodríguez, licenciado en Tecnologías Computacionales y
-          técnico en soporte. Me interesa entender cómo funcionan las cosas,
+          Soy Eduardo Rodríguez. Me interesa entender cómo funcionan las cosas,
           encontrar soluciones y seguir aprendiendo. Mi camino en la tecnología
           comenzó con el soporte técnico y se ha ampliado hacia el desarrollo
           de software, donde encuentro una forma de combinar lógica,
           creatividad y atención al detalle.
         </p>
+
+        <div
+          className="about-education"
+          aria-labelledby="about-education-title"
+        >
+          <h3 id="about-education-title">Formación</h3>
+
+          <ul className="about-education-list">
+            <li>
+              <h4>Licenciatura en Tecnologías Computacionales</h4>
+              <p>Universidad Veracruzana</p>
+            </li>
+
+            <li>
+              <h4>
+                Técnico en Soporte y Mantenimiento de Equipo de Cómputo
+              </h4>
+              <p>CBTIS 35</p>
+            </li>
+          </ul>
+        </div>
 
         <a
           className="text-link"
