@@ -37,7 +37,7 @@ export const projects: Project[] = [
     repositoryUrl: 'https://github.com/eduard165/campo-negro-web.git',
     siteUrl: 'https://campo-negro-web.vercel.app/',
   },
-  {
+  /* {
     id: 'el-compa',
     title: 'El Compa',
     category: 'Sitio web · Alimentos y bebidas',
@@ -60,18 +60,44 @@ export const projects: Project[] = [
     kind: 'website',
     visual: 'ganaderia',
     status: 'En desarrollo',
-  },
+  } */
   {
     id: 'time-fast',
     title: 'Time-Fast',
-    category: 'Backend · Gestión de envíos',
-    summary: 'API REST para administrar envíos, clientes, conductores y paquetes.',
-    description: 'API para gestionar envíos, empleados, clientes, conductores y paquetes; incluye asignación de conductores, estados de envío y búsquedas.',
+    category: 'Sistema de logística · Proyecto académico',
+    summary: 'Sistema de gestión y seguimiento de envíos con una API REST que conecta aplicaciones de escritorio, móvil y web.',
+    description: 'Proyecto integrador de la Universidad Veracruzana (2024–2025), desarrollado en equipo. La API permite gestionar colaboradores, unidades, clientes, envíos y paquetes. Una aplicación de escritorio, una app móvil y un tracker web consumen sus servicios.',
     contribution: 'Desarrollo de la API REST y de la lógica de gestión de envíos.',
-    technologies: ['Java', 'Spring Boot', 'JPA / Hibernate', 'MySQL', 'MyBatis'],
+    technologies: ['Java', 'MyBatis', 'MySQL', 'JavaFX', 'Kotlin', 'HTML', 'CSS', 'JavaScript', 'Gson', 'Procedimientos Almacenados'],
     kind: 'software',
     visual: 'logistica',
+    repositoryUrl: 'https://github.com/tu-usuario/tu-repositorio-real',
   },
+  
+ {
+  id: 'records-management',
+  title: 'Archivo Interno · SDI',
+  category: 'Aplicación web · Gestión documental',
+  summary:
+    'Registro, organización y consulta de documentos de auditoría con acceso institucional e integración con SharePoint.',
+  description:
+    'Aplicación web desarrollada en 2024 para la Secretaría de Desarrollo Institucional de la Universidad Veracruzana. Permite registrar documentos de auditoría, cargar archivos en SharePoint, organizarlos por carpeta, auditoría, año y mes, y consultar y actualizar la información. Integra autenticación con cuentas institucionales de Microsoft mediante MSAL.',
+  contribution:
+    'Desarrollo integral de la aplicación, la autenticación institucional y la integración con Microsoft Graph API para gestionar archivos y registros en SharePoint.',
+  technologies: [
+    'Next.js',
+    'React',
+    'JavaScript',
+    'SharePoint',
+    'Microsoft Graph API',
+    'MSAL',
+    'Tailwind CSS',
+    'Flowbite',
+  ],
+  kind: 'software',
+  visual: 'documentos',
+  repositoryUrl: 'https://github.com/eduard165/ArchivoInterno-SDI',
+},
   {
     id: 'auth-system',
     title: 'Auth System FastAPI',
@@ -82,17 +108,6 @@ export const projects: Project[] = [
     technologies: ['FastAPI', 'MongoDB', 'JWT', 'Docker', 'Pytest'],
     kind: 'software',
     visual: 'seguridad',
-  },
-  {
-    id: 'records-management',
-    title: 'Internal Records Management System',
-    category: 'Aplicación web · Documentos',
-    summary: 'Organización de documentos de auditoría en SharePoint.',
-    description: 'Sistema para organizar, buscar y acceder a documentos de auditoría mediante SharePoint y flujos de automatización.',
-    contribution: 'Participación en el desarrollo de la aplicación y sus integraciones.',
-    technologies: ['React', 'SharePoint', 'Microsoft Graph API', 'Azure Functions'],
-    kind: 'software',
-    visual: 'documentos',
   },
 ]
 

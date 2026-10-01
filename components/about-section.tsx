@@ -1,17 +1,84 @@
-import { ArrowUpRight, Code2, Database, Boxes } from 'lucide-react'
+import {
+  ArrowUpRight,
+  Code2,
+  Server,
+  Database,
+  Smartphone,
+  Monitor,
+  Wrench,
+} from 'lucide-react'
 
 export function AboutSection() {
   return (
-    <section id="sobre-mi" className="section about-section" aria-labelledby="about-title">
-      <div><p className="eyebrow">Sobre mí</p><h2 id="about-title">Código claro. Ideas que toman forma.</h2></div>
-      <div className="about-copy">
-        <p>Soy Eduardo, desarrollador en Xalapa. Creo sitios web, aplicaciones y APIs para convertir necesidades reales en soluciones útiles.</p>
-        <a className="text-link" href="/cv-eduardo-rodriguez.pdf" download>Descargar CV <ArrowUpRight aria-hidden="true" /></a>
+    <section
+      id="sobre-mi"
+      className="section about-section"
+      aria-labelledby="about-title"
+    >
+      <div>
+        <p className="eyebrow">Sobre mí</p>
+        <h2 id="about-title">
+          Curiosidad para aprender. Criterio para resolver.
+        </h2>
       </div>
-      <div className="skills-grid" aria-label="Tecnologías">
-        <div><Code2 aria-hidden="true" /><h3>Frontend</h3><p>React · JavaScript · TypeScript</p></div>
-        <div><Database aria-hidden="true" /><h3>Backend</h3><p>Java · Spring Boot · FastAPI</p></div>
-        <div><Boxes aria-hidden="true" /><h3>Herramientas</h3><p>Git · Docker · Bases de datos</p></div>
+
+      <div className="about-copy">
+        <p>
+          Soy Eduardo Rodríguez, licenciado en Tecnologías Computacionales y
+          técnico en soporte. Me interesa entender cómo funcionan las cosas,
+          encontrar soluciones y seguir aprendiendo. Mi camino en la tecnología
+          comenzó con el soporte técnico y se ha ampliado hacia el desarrollo
+          de software, donde encuentro una forma de combinar lógica,
+          creatividad y atención al detalle.
+        </p>
+
+        <a
+          className="text-link"
+          href="/cv-eduardo-rodriguez.pdf"
+          download
+        >
+          Descargar CV <ArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className="skills-grid" aria-label="Tecnologías y herramientas">
+        <div>
+          <Code2 aria-hidden="true" />
+          <h3>Frontend</h3>
+          <p>
+            HTML · CSS · JavaScript · TypeScript · React · Next.js · Tailwind CSS
+          </p>
+        </div>
+
+        <div>
+          <Server aria-hidden="true" />
+          <h3>Backend</h3>
+          <p>Java · Python · Spring Boot · FastAPI · MyBatis · APIs REST</p>
+        </div>
+
+        <div>
+          <Database aria-hidden="true" />
+          <h3>Bases de datos</h3>
+          <p>MySQL · PostgreSQL · SQL Server · MongoDB</p>
+        </div>
+
+        <div>
+          <Smartphone aria-hidden="true" />
+          <h3>Móvil</h3>
+          <p>Kotlin · Android</p>
+        </div>
+
+        <div>
+          <Monitor aria-hidden="true" />
+          <h3>Escritorio</h3>
+          <p>Java · JavaFX</p>
+        </div>
+
+        <div>
+          <Wrench aria-hidden="true" />
+          <h3>Herramientas</h3>
+          <p>Git · GitHub · Docker · Azure · Vercel</p>
+        </div>
       </div>
     </section>
   )
