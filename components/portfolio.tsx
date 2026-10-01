@@ -32,7 +32,7 @@ export default function Portfolio() {
     <>
       <Header />
       <main><Hero /><ProjectsSection onOpen={open} /><AboutSection /><BackendSection onOpen={open} /><ContactSection /></main>
-      <footer><span>Eduardo Rodríguez</span><span>Desarrollador web · Xalapa, México</span><nav aria-label="Navegación del pie"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav></footer>
+      <footer><span>Eduardo Rodríguez</span><span>Desarrollador web · México</span><nav aria-label="Navegación del pie"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav></footer>
       {selected && <ProjectModal project={selected} onClose={close} onNext={next} />}
     </>
   )

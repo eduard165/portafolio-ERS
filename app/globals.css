@@ -369,3 +369,20 @@ footer span:first-child { color: var(--ink); }
     font-size: 13px;
   }
 }
+
+.project-modal .close-button {
+  top: 12px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 600px) {
+  .project-modal .close-button {
+    top: 8px;
+    right: 12px;
+  }
+}
