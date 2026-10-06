@@ -207,3 +207,107 @@ section[id] {
     scroll-margin-top: 180px;
   }
 }
+
+/* Menú móvil */
+.mobile-menu-button {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 72px;
+    padding: 8px 20px;
+    box-sizing: border-box;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .site-header .brand-logo {
+    width: 64px;
+    height: auto;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 11px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .mobile-menu-button svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .site-header .header-controls {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: none;
+    width: auto;
+    padding: 12px 20px 20px;
+    box-sizing: border-box;
+
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 25px #252b241a;
+  }
+
+  .site-header .header-controls.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .site-header .header-controls nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .site-header .header-controls nav a {
+    display: block;
+    padding: 12px 2px;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+
+  .site-header .language-switch {
+    align-self: flex-start;
+  }
+
+  .mobile-menu-button:focus-visible {
+    outline: 2px solid var(--olive);
+    outline-offset: 3px;
+  }
+
+  body {
+    padding-top: 72px;
+  }
+
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+}
