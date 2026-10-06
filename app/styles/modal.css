@@ -1,0 +1,254 @@
+/* modal: estilos de la sección y sus ajustes responsive. */
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  width: min(1190px, calc(100% - 48px));
+  max-width: none;
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-y: auto;
+}
+
+.project-modal::backdrop {
+  background: rgb(18 22 19 / 76%);
+}
+
+.project-modal-content {
+  position: relative;
+  padding: 42px 46px 38px;
+}
+
+.close-button {
+  position: absolute;
+  z-index: 2;
+  right: 38px;
+  top: 37px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.close-button svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 1.4;
+}
+
+.modal-heading {
+  border-top: 1px solid #96998f;
+  padding-top: 20px;
+  margin-bottom: 26px;
+}
+
+.modal-heading h2 {
+  font-size: 48px;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .75fr;
+  gap: 40px;
+}
+
+.modal-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-gallery .project-visual {
+  min-height: 400px;
+}
+
+.modal-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-copy h3 {
+  font-size: 27px;
+  font-weight: 400;
+  letter-spacing: -.05em;
+  margin: 0 0 13px;
+}
+
+.modal-copy p {
+  color: var(--muted);
+  font: 16px/1.55 Georgia, serif;
+  margin-bottom: 30px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.tech-tags span {
+  padding: 10px 12px;
+  background: var(--soft);
+  font-size: 12px;
+}
+
+.modal-status {
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.next-button {
+  margin-left: auto;
+}
+
+@media (max-width: 800px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-modal {
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+  .project-modal-content {
+    padding: 35px 25px;
+  }
+  .modal-grid {
+    gap: 26px;
+  }
+  .modal-gallery .project-visual {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 540px) {
+  .modal-heading {
+    padding-right: 38px;
+  }
+  .modal-heading h2 {
+    font-size: 37px;
+  }
+  .close-button {
+    top: 31px;
+    right: 21px;
+  }
+  .modal-gallery .project-visual {
+    min-height: 240px;
+  }
+  .next-button {
+    margin-left: 0;
+  }
+}
+
+.modal-gallery .gallery-shell {
+  height: min(60vh, 520px);
+}
+
+.modal-gallery .project-visual {
+  min-height: 0;
+}
+
+@media (max-width: 800px) {
+  .modal-gallery .gallery-shell {
+    height: min(45vh, 360px);
+  }
+}
+
+@media (max-width: 540px) {
+  .modal-gallery .gallery-shell {
+    height: 260px;
+  }
+}
+
+.project-modal .close-button {
+  top: 12px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 600px) {
+  .project-modal .close-button {
+    top: 8px;
+    right: 12px;
+  }
+}
+
+.project-demo-access {
+  margin: 24px 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+}
+
+.modal-copy .project-demo-access h3 {
+  margin: 0 0 18px;
+  font-size: 22px;
+}
+
+.project-demo-credentials {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.project-demo-credentials > div {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.project-demo-credentials dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.project-demo-credentials dd {
+  margin: 0;
+}
+
+.project-demo-credentials code {
+  display: inline-block;
+  padding: 5px 9px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.modal-copy .project-demo-access > p {
+  margin: 0;
+  font: 13px/1.6 Arial, sans-serif;
+}
+
+@media (max-width: 540px) {
+  .project-demo-access {
+    padding: 18px;
+  }
+  .project-demo-credentials > div {
+    grid-template-columns: 85px minmax(0, 1fr);
+    gap: 8px;
+  }
+}

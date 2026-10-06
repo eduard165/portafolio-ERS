@@ -1,0 +1,126 @@
+/* gallery: estilos de la sección y sus ajustes responsive. */
+
+.project-image-frame {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.gallery-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #263026;
+}
+
+.gallery-main {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.gallery-main-button {
+  cursor: pointer;
+  text-align: left;
+}
+
+.gallery-main .project-visual, .gallery-main .project-visual-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.gallery-main-button .project-visual, .gallery-main-button .project-visual-image {
+  transition: transform .35s ease;
+}
+
+.gallery-main-button:hover .project-visual, .gallery-main-button:hover .project-visual-image {
+  transform: scale(1.025);
+}
+
+.gallery-controls {
+  position: absolute;
+  z-index: 2;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  color: white;
+  background: rgb(17 22 18 / 85%);
+}
+
+.gallery-caption {
+  position: absolute;
+  z-index: 2;
+  left: 15px;
+  bottom: 15px;
+  max-width: calc(100% - 170px);
+  padding: 10px 12px;
+  color: white;
+  background: rgb(17 22 18 / 85%);
+  font-size: 11px;
+}
+
+.gallery-controls button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.gallery-controls button:hover {
+  background: rgb(255 255 255 / 15%);
+}
+
+.gallery-controls svg {
+  width: 19px;
+  height: 19px;
+}
+
+.gallery-controls span {
+  min-width: 42px;
+  text-align: center;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.project-external-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.project-image-frame .image-index {
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .project-image-frame {
+    height: 290px;
+  }
+}
+
+@media (max-width: 540px) {
+  .project-image-frame {
+    height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-main-button .project-visual, .gallery-main-button .project-visual-image {
+    transition: none;
+  }
+}

@@ -1,0 +1,232 @@
+/* contact: estilos de la sección y sus ajustes responsive. */
+
+.contact-section > p {
+  color: var(--muted);
+  font: 16px/1.6 Georgia, serif;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: 1.1fr .8fr auto;
+  align-items: center;
+  gap: 45px;
+}
+
+.contact-section > p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+  .contact-section {
+    gap: 16px;
+  }
+  .contact-section .button {
+    justify-self: start;
+  }
+}
+
+.contact-section.contact-section--form {
+  display: block;
+}
+
+.contact-heading {
+  max-width: 760px;
+  margin-bottom: 42px;
+}
+
+.contact-heading h2 {
+  max-width: none;
+}
+
+.contact-heading > p:last-child {
+  max-width: 580px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font: 16px/1.7 Georgia, serif;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 5vw, 72px);
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-channels, .contact-form {
+  min-width: 0;
+}
+
+.contact-channels h3, .contact-form h3 {
+  margin: 0 0 20px;
+  font: 400 27px/1.2 Georgia, serif;
+  letter-spacing: -.03em;
+}
+
+.contact-channels > p {
+  max-width: 360px;
+  margin: 0 0 28px;
+  color: var(--muted);
+  font: 15px/1.7 Georgia, serif;
+}
+
+.contact-channel {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-channel > svg {
+  width: 22px;
+  height: 22px;
+  color: var(--olive);
+  stroke-width: 1.5;
+}
+
+.contact-channel > svg:last-child {
+  width: 18px;
+  height: 18px;
+  transition: transform .2s ease;
+}
+
+.contact-channel:hover > svg:last-child {
+  transform: translate(2px, -2px);
+}
+
+.contact-channel small {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.contact-channel strong {
+  font-size: 14px;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.contact-channel:hover strong {
+  color: var(--olive);
+}
+
+.contact-form {
+  padding: 30px;
+  border: 1px solid var(--line);
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-field {
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.contact-field label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.contact-field input, .contact-field textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 14px/1.6 Arial, sans-serif;
+}
+
+.contact-field textarea {
+  min-height: 155px;
+  resize: vertical;
+}
+
+.contact-field input::placeholder, .contact-field textarea::placeholder {
+  color: var(--muted);
+  opacity: .8;
+}
+
+.contact-field input:focus-visible, .contact-field textarea:focus-visible {
+  border-color: var(--olive);
+  outline: 2px solid var(--olive);
+  outline-offset: 2px;
+}
+
+.contact-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.contact-form-footer > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.contact-form-notice {
+  margin: 18px 0 0;
+  color: var(--olive);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.contact-form-notice:empty {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+  .contact-channels > p {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 540px) {
+  .contact-heading {
+    margin-bottom: 30px;
+  }
+  .contact-form {
+    padding: 24px 18px;
+  }
+  .contact-form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .contact-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .contact-form-footer .button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-channel > svg:last-child {
+    transition: none;
+  }
+}

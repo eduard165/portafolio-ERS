@@ -2,7 +2,6 @@ import { ArrowUpRight } from 'lucide-react'
 import { softwareProjects, type Project } from '@/lib/projects'
 import { ProjectVisual } from './project-visual'
 import { TimeFastShowcase } from './time-fast-showcase'
-import './time-fast.css'
 
 export function BackendSection({ onOpen }: { onOpen: (project: Project, trigger: HTMLElement) => void }) {
   return (

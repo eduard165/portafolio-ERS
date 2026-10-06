@@ -9,6 +9,7 @@ import { AboutSection } from './about-section'
 import { BackendSection } from './backend-section'
 import { ContactSection } from './contact-section'
 import { ProjectModal } from './project-modal'
+import { GithubSection } from './github-section'
 
 export default function Portfolio() {
   const [selected, setSelected] = useState<Project | null>(null)
@@ -31,8 +32,8 @@ export default function Portfolio() {
   return (
     <>
       <Header />
-      <main><Hero /><ProjectsSection onOpen={open} /><AboutSection /><BackendSection onOpen={open} /><ContactSection /></main>
-      <footer><span>Eduardo Rodríguez</span><span>Desarrollador web · México</span><nav aria-label="Navegación del pie"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav></footer>
+      <main><Hero /><ProjectsSection onOpen={open} /><AboutSection /><GithubSection /><BackendSection onOpen={open} /><ContactSection /></main>
+      <footer><span>ERS©</span><span>Desarrollador · México</span><nav aria-label="Navegación del pie"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav></footer>
       {selected && <ProjectModal project={selected} onClose={close} onNext={next} />}
     </>
   )

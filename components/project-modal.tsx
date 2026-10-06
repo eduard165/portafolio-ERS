@@ -21,6 +21,7 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
     if (!dialog) return
 
     const previousOverflow = document.body.style.overflow
+
     dialog.showModal()
     document.body.style.overflow = 'hidden'
     closeRef.current?.focus()
@@ -38,7 +39,9 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
   return (
     <dialog
       ref={dialogRef}
-      className={`project-modal${project.id === 'time-fast' ? ' project-modal--time-fast' : ''}`}
+      className={`project-modal${
+        project.id === 'time-fast' ? ' project-modal--time-fast' : ''
+      }`}
       aria-labelledby="project-modal-title"
       onCancel={(event) => {
         event.preventDefault()
@@ -83,6 +86,7 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                 {project.technologies.length > 0 && (
                   <>
                     <h3>Tecnologías</h3>
+
                     <div className="tech-tags">
                       {project.technologies.map((technology) => (
                         <span key={technology}>{technology}</span>
@@ -92,7 +96,42 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                 )}
 
                 {project.status && (
-                  <span className="status modal-status">{project.status}</span>
+                  <span className="status modal-status">
+                    {project.status}
+                  </span>
+                )}
+
+                {project.id === 'notes-app' && (
+                  <section
+                    className="project-demo-access"
+                    aria-labelledby="notes-demo-title"
+                  >
+                    <h3 id="notes-demo-title">
+                      Acceso de demostración
+                    </h3>
+
+                    <dl className="project-demo-credentials">
+                      <div>
+                        <dt>Usuario</dt>
+                        <dd>
+                          <code>admin</code>
+                        </dd>
+                      </div>
+
+                      <div>
+                        <dt>Contraseña</dt>
+                        <dd>
+                          <code>admin123</code>
+                        </dd>
+                      </div>
+                    </dl>
+
+                    <p>
+                      Utiliza estas credenciales para probar la aplicación.
+                      Las notas se guardan únicamente en el navegador
+                      donde se utiliza.
+                    </p>
+                  </section>
                 )}
 
                 <div className="modal-actions">
@@ -103,7 +142,10 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Ver sitio <ArrowUpRight aria-hidden="true" />
+                      {project.id === 'notes-app'
+                        ? 'Probar aplicación'
+                        : 'Ver sitio'}
+                      <ArrowUpRight aria-hidden="true" />
                     </a>
                   )}
 
@@ -123,7 +165,8 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                     type="button"
                     onClick={onNext}
                   >
-                    Siguiente proyecto <ArrowUpRight aria-hidden="true" />
+                    Siguiente proyecto
+                    <ArrowUpRight aria-hidden="true" />
                   </button>
                 </div>
               </div>

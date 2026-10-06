@@ -3,8 +3,9 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Eduardo Rodríguez · Desarrollo web',
-  description: 'Portafolio de Eduardo Rodríguez, desarrollador web en Xalapa, México.',
+  title: 'Eduardo Rodríguez · Desarrollador Full Stack',
+  description:
+    'Portafolio de Eduardo Rodríguez, desarrollador Full Stack. Aplicaciones web, APIs y software: soluciones digitales con propósito.',
   generator: 'Next.js',
   icons: {
     icon: [
@@ -44,3 +45,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+

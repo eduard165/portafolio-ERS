@@ -47,7 +47,7 @@ export function AboutSection() {
               <h4>
                 Técnico en Soporte y Mantenimiento de Equipo de Cómputo
               </h4>
-              <p>CBTIS 35</p>
+              <p>C.B.T.I.S No.35</p>
             </li>
           </ul>
         </div>
@@ -102,4 +102,5 @@ export function AboutSection() {
       </div>
     </section>
   )
+  
 }

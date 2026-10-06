@@ -99,8 +99,8 @@ export const projects: Project[] = [
   repositoryUrl: 'https://github.com/eduard165/ArchivoInterno-SDI',
 },
   {
-  id: 'movies-api-fastapi',
-  title: 'Movies API',
+  id: 'api-fastapi-MongoDB-practice',
+  title: 'FastAPI · MongoDB',
   category: 'Backend · API REST',
   summary: 'API para gestionar películas con autenticación JWT y almacenamiento en MongoDB.',
   description: 'API REST desarrollada con FastAPI y MongoDB para registrar, consultar, actualizar y eliminar películas. Integra autenticación mediante JWT, validación de datos y bitácoras. Incluye soporte para pruebas unitarias con pytest y ejecución en contenedores Docker.',
@@ -128,6 +128,26 @@ export const projects: Project[] = [
   kind: 'software',
   visual: 'documentos',
   repositoryUrl: 'https://github.com/eduard165/fastapi-postgres-practice',
+},
+{
+  id: 'notes-app',
+  title: 'Note Taking App',
+  category: 'Aplicación web · Organización de notas',
+  summary: 'Aplicación para crear, editar y organizar notas por categorías, con almacenamiento local.',
+  description: 'Aplicación desarrollada con React para crear, editar y eliminar notas con título, contenido y categorías opcionales. Permite archivar y recuperar notas, filtrarlas por categoría y confirmar su eliminación. Los datos se guardan en localStorage y permanecen disponibles en el mismo navegador después de recargar la página.',
+  contribution: 'Desarrollo de la interfaz, los componentes de gestión de notas y la persistencia local.',
+  technologies: [
+    'React',
+    'JavaScript',
+    'React Bootstrap',
+    'Bootstrap',
+    'React Router',
+    'localStorage',
+  ],
+  kind: 'software',
+  visual: 'documentos',
+  repositoryUrl: 'https://github.com/eduard165/notes-app',
+  siteUrl: 'https://notes-app-red-sigma.vercel.app/login',
 },
 ]
 
