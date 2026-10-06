@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Code2, FolderGit2 } from 'lucide-react'
+import { useLanguage } from './language-provider'
 
 type Repository = {
   id: number
@@ -15,16 +16,77 @@ type Repository = {
 
 const USERNAME = 'eduard165'
 
-function formatDate(value: string) {
-  return new Intl.DateTimeFormat('es-MX', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-    timeZone: 'America/Mexico_City',
-  }).format(new Date(value))
+const githubTexts = {
+  es: {
+    eyebrow: 'Código y práctica',
+    title: 'Actividad en GitHub.',
+    description:
+      'Repositorios, lenguajes y actualizaciones de proyectos públicos.',
+    loading: 'Consultando repositorios…',
+    error:
+      'No se pudo cargar la actividad. Puedes consultar los proyectos directamente en GitHub.',
+    empty: 'No hay repositorios públicos propios disponibles.',
+    repositories: 'Repositorios públicos',
+    forks: 'Sin incluir forks',
+    languages: 'Lenguajes principales',
+    detected: 'Detectados en los repositorios',
+    lastPush: 'Último push',
+    noData: 'Sin datos',
+    lastPushDescription: 'Última subida de cambios registrada',
+    projectLanguages: 'Lenguajes en los proyectos',
+    distribution:
+      'Distribución por lenguaje principal de cada repositorio.',
+    repository: 'repositorio',
+    repositoriesPlural: 'repositorios',
+    noLanguages:
+      'GitHub todavía no identifica lenguajes principales.',
+    recent: 'Actualizaciones recientes',
+    unknownLanguage: 'Sin lenguaje identificado',
+  },
+  en: {
+    eyebrow: 'Code and practice',
+    title: 'GitHub activity.',
+    description:
+      'Repositories, languages, and updates from public projects.',
+    loading: 'Loading repositories…',
+    error:
+      'Activity could not be loaded. You can view the projects directly on GitHub.',
+    empty: 'No public non-fork repositories are available.',
+    repositories: 'Public repositories',
+    forks: 'Excluding forks',
+    languages: 'Primary languages',
+    detected: 'Detected across repositories',
+    lastPush: 'Latest push',
+    noData: 'No data',
+    lastPushDescription: 'Most recent recorded code push',
+    projectLanguages: 'Project languages',
+    distribution:
+      'Distribution by the primary language of each repository.',
+    repository: 'repository',
+    repositoriesPlural: 'repositories',
+    noLanguages:
+      'GitHub has not identified any primary languages yet.',
+    recent: 'Recent updates',
+    unknownLanguage: 'No language identified',
+  },
+}
+
+function formatDate(value: string, language: 'es' | 'en') {
+  return new Intl.DateTimeFormat(
+    language === 'es' ? 'es-MX' : 'en-US',
+    {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'America/Mexico_City',
+    },
+  ).format(new Date(value))
 }
 
 export function GithubSection() {
+  const { language } = useLanguage()
+  const text = githubTexts[language]
+
   const [repositories, setRepositories] = useState<Repository[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -46,15 +108,14 @@ export function GithubSection() {
               headers: {
                 Accept: 'application/vnd.github+json',
               },
-            }
+            },
           )
 
           if (!response.ok) {
-            throw new Error('No se pudieron consultar los repositorios')
+            throw new Error('Failed to load repositories')
           }
 
           const batch: Repository[] = await response.json()
-
           allRepositories.push(...batch)
 
           if (batch.length < 100) break
@@ -63,7 +124,7 @@ export function GithubSection() {
 
         if (!controller.signal.aborted) {
           setRepositories(
-            allRepositories.filter((repository) => !repository.fork)
+            allRepositories.filter((repository) => !repository.fork),
           )
         }
       } catch {
@@ -87,16 +148,16 @@ export function GithubSection() {
 
       return counts
     },
-    {}
+    {},
   )
 
   const languages = Object.entries(languageCounts).sort(
-    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0])
+    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
   )
 
   const classifiedRepositories = languages.reduce(
     (total, [, count]) => total + count,
-    0
+    0,
   )
 
   const recentRepositories = repositories
@@ -104,7 +165,7 @@ export function GithubSection() {
     .sort(
       (a, b) =>
         new Date(b.pushed_at!).getTime() -
-        new Date(a.pushed_at!).getTime()
+        new Date(a.pushed_at!).getTime(),
     )
 
   const latestUpdate = recentRepositories[0]?.pushed_at
@@ -118,76 +179,81 @@ export function GithubSection() {
     >
       <div className="github-heading">
         <div>
-          <p className="eyebrow">Código y práctica</p>
-          <h2 id="github-title">Actividad en GitHub.</h2>
-          <p>
-            Repositorios, lenguajes y actualizaciones de proyectos públicos.
-          </p>
+          <p className="eyebrow">{text.eyebrow}</p>
+          <h2 id="github-title">{text.title}</h2>
+          <p>{text.description}</p>
         </div>
       </div>
 
       {loading ? (
         <p className="github-notice" role="status">
-          Consultando repositorios…
+          {text.loading}
         </p>
       ) : error ? (
         <p className="github-notice" role="status">
-          No se pudo cargar la actividad. Puedes consultar los proyectos
-          directamente en GitHub.
+          {text.error}
         </p>
       ) : repositories.length === 0 ? (
-        <p className="github-notice">
-          No hay repositorios públicos propios disponibles.
-        </p>
+        <p className="github-notice">{text.empty}</p>
       ) : (
         <>
           <div className="github-metrics">
             <div>
               <FolderGit2 aria-hidden="true" />
-              <span>Repositorios públicos</span>
+              <span>{text.repositories}</span>
               <strong>{repositories.length}</strong>
-              <small>Sin incluir forks</small>
+              <small>{text.forks}</small>
             </div>
 
             <div>
               <Code2 aria-hidden="true" />
-              <span>Lenguajes principales</span>
+              <span>{text.languages}</span>
               <strong>{languages.length}</strong>
-              <small>Detectados en los repositorios</small>
+              <small>{text.detected}</small>
             </div>
 
             <div>
               <ArrowUpRight aria-hidden="true" />
-              <span>Último push</span>
+              <span>{text.lastPush}</span>
               <strong className="github-date">
-                {latestUpdate ? formatDate(latestUpdate) : 'Sin datos'}
+                {latestUpdate
+                  ? formatDate(latestUpdate, language)
+                  : text.noData}
               </strong>
-              <small>Última subida de cambios registrada</small>
+              <small>{text.lastPushDescription}</small>
             </div>
           </div>
 
           <div className="github-details">
             <div className="github-languages">
-              <h3>Lenguajes en los proyectos</h3>
+              <h3>{text.projectLanguages}</h3>
               <p className="github-description">
-                Distribución por lenguaje principal de cada repositorio.
+                {text.distribution}
               </p>
 
               {languages.length > 0 ? (
                 <ul className="github-language-list">
-                  {languages.map(([language, count]) => (
-                    <li key={language}>
+                  {languages.map(([programmingLanguage, count]) => (
+                    <li key={programmingLanguage}>
                       <div className="github-language-label">
-                        <span>{language}</span>
+                        <span>{programmingLanguage}</span>
                         <span>
-                          {count} {count === 1 ? 'repositorio' : 'repositorios'}
+                          {count}{' '}
+                          {count === 1
+                            ? text.repository
+                            : text.repositoriesPlural}
                         </span>
                       </div>
 
-                      <div className="github-language-track" aria-hidden="true">
+                      <div
+                        className="github-language-track"
+                        aria-hidden="true"
+                      >
                         <span
                           style={{
-                            width: `${(count / classifiedRepositories) * 100}%`,
+                            width: `${
+                              (count / classifiedRepositories) * 100
+                            }%`,
                           }}
                         />
                       </div>
@@ -196,13 +262,13 @@ export function GithubSection() {
                 </ul>
               ) : (
                 <p className="github-description">
-                  GitHub todavía no identifica lenguajes principales.
+                  {text.noLanguages}
                 </p>
               )}
             </div>
 
             <div className="github-recent">
-              <h3>Actualizaciones recientes</h3>
+              <h3>{text.recent}</h3>
 
               <ul className="github-repository-list">
                 {recentRepositories.slice(0, 3).map((repository) => (
@@ -222,10 +288,10 @@ export function GithubSection() {
                       )}
 
                       <small>
-                        {repository.language ?? 'Sin lenguaje identificado'}
+                        {repository.language ?? text.unknownLanguage}
                         {' · '}
                         <time dateTime={repository.pushed_at!}>
-                          {formatDate(repository.pushed_at!)}
+                          {formatDate(repository.pushed_at!, language)}
                         </time>
                       </small>
                     </a>

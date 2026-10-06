@@ -2,9 +2,50 @@
 
 import { useEffect, useRef } from 'react'
 import { ArrowUpRight, X } from 'lucide-react'
-import type { Project } from '@/lib/projects'
+import {
+  getLocalizedProject,
+  type Project,
+} from '@/lib/projects'
 import { ProjectGallery } from './project-gallery'
 import { TimeFastModalContent } from './time-fast-modal-content'
+import { useLanguage } from './language-provider'
+
+const modalTexts = {
+  es: {
+    close: 'Cerrar detalles del proyecto',
+    project: 'Proyecto',
+    overview: 'El proyecto',
+    contribution: 'Mi participación',
+    technologies: 'Tecnologías',
+    status: 'En desarrollo',
+    demo: 'Acceso de demostración',
+    username: 'Usuario',
+    password: 'Contraseña',
+    demoDescription:
+      'Utiliza estas credenciales para probar la aplicación. Las notas se guardan únicamente en el navegador donde se utiliza.',
+    tryApp: 'Probar aplicación',
+    site: 'Ver sitio',
+    code: 'Ver código',
+    next: 'Siguiente proyecto',
+  },
+  en: {
+    close: 'Close project details',
+    project: 'Project',
+    overview: 'Overview',
+    contribution: 'My role',
+    technologies: 'Technologies',
+    status: 'In development',
+    demo: 'Demo access',
+    username: 'Username',
+    password: 'Password',
+    demoDescription:
+      'Use these credentials to try the application. Notes are stored only in the browser where the application is used.',
+    tryApp: 'Try application',
+    site: 'Visit website',
+    code: 'View code',
+    next: 'Next project',
+  },
+}
 
 type Props = {
   project: Project
@@ -13,6 +54,10 @@ type Props = {
 }
 
 export function ProjectModal({ project, onClose, onNext }: Props) {
+  const { language } = useLanguage()
+  const text = modalTexts[language]
+  const localizedProject = getLocalizedProject(project, language)
+
   const dialogRef = useRef<HTMLDialogElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
 
@@ -57,38 +102,46 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
           className="close-button"
           type="button"
           onClick={onClose}
-          aria-label="Cerrar detalles del proyecto"
+          aria-label={text.close}
         >
           <X aria-hidden="true" />
         </button>
 
         {project.id === 'time-fast' ? (
-          <TimeFastModalContent project={project} onNext={onNext} />
+          <TimeFastModalContent
+            project={localizedProject}
+            onNext={onNext}
+          />
         ) : (
           <>
             <div className="modal-heading">
-              <p className="eyebrow">Proyecto · {project.category}</p>
-              <h2 id="project-modal-title">{project.title}</h2>
+              <p className="eyebrow">
+                {text.project} · {localizedProject.category}
+              </p>
+
+              <h2 id="project-modal-title">
+                {localizedProject.title}
+              </h2>
             </div>
 
             <div className="modal-grid">
               <div className="modal-gallery">
-                <ProjectGallery project={project} />
+                <ProjectGallery project={localizedProject} />
               </div>
 
               <div className="modal-copy">
-                <h3>El proyecto</h3>
-                <p>{project.description}</p>
+                <h3>{text.overview}</h3>
+                <p>{localizedProject.description}</p>
 
-                <h3>Mi participación</h3>
-                <p>{project.contribution}</p>
+                <h3>{text.contribution}</h3>
+                <p>{localizedProject.contribution}</p>
 
-                {project.technologies.length > 0 && (
+                {localizedProject.technologies.length > 0 && (
                   <>
-                    <h3>Tecnologías</h3>
+                    <h3>{text.technologies}</h3>
 
                     <div className="tech-tags">
-                      {project.technologies.map((technology) => (
+                      {localizedProject.technologies.map((technology) => (
                         <span key={technology}>{technology}</span>
                       ))}
                     </div>
@@ -97,7 +150,7 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
 
                 {project.status && (
                   <span className="status modal-status">
-                    {project.status}
+                    {text.status}
                   </span>
                 )}
 
@@ -106,31 +159,25 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                     className="project-demo-access"
                     aria-labelledby="notes-demo-title"
                   >
-                    <h3 id="notes-demo-title">
-                      Acceso de demostración
-                    </h3>
+                    <h3 id="notes-demo-title">{text.demo}</h3>
 
                     <dl className="project-demo-credentials">
                       <div>
-                        <dt>Usuario</dt>
+                        <dt>{text.username}</dt>
                         <dd>
                           <code>admin</code>
                         </dd>
                       </div>
 
                       <div>
-                        <dt>Contraseña</dt>
+                        <dt>{text.password}</dt>
                         <dd>
                           <code>admin123</code>
                         </dd>
                       </div>
                     </dl>
 
-                    <p>
-                      Utiliza estas credenciales para probar la aplicación.
-                      Las notas se guardan únicamente en el navegador
-                      donde se utiliza.
-                    </p>
+                    <p>{text.demoDescription}</p>
                   </section>
                 )}
 
@@ -143,8 +190,8 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                       rel="noopener noreferrer"
                     >
                       {project.id === 'notes-app'
-                        ? 'Probar aplicación'
-                        : 'Ver sitio'}
+                        ? text.tryApp
+                        : text.site}
                       <ArrowUpRight aria-hidden="true" />
                     </a>
                   )}
@@ -156,7 +203,8 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Ver código <ArrowUpRight aria-hidden="true" />
+                      {text.code}
+                      <ArrowUpRight aria-hidden="true" />
                     </a>
                   )}
 
@@ -165,7 +213,7 @@ export function ProjectModal({ project, onClose, onNext }: Props) {
                     type="button"
                     onClick={onNext}
                   >
-                    Siguiente proyecto
+                    {text.next}
                     <ArrowUpRight aria-hidden="true" />
                   </button>
                 </div>

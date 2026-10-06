@@ -11,8 +11,29 @@ import { ContactSection } from './contact-section'
 import { ProjectModal } from './project-modal'
 import { GithubSection } from './github-section'
 import { Reveal } from './reveal'
+import { useLanguage } from './language-provider'
+
+const footerTexts = {
+  es: {
+    role: 'Desarrollador · México',
+    navigation: 'Navegación del pie',
+    projects: 'Proyectos',
+    about: 'Sobre mí',
+    contact: 'Contacto',
+  },
+  en: {
+    role: 'Developer · Mexico',
+    navigation: 'Footer navigation',
+    projects: 'Projects',
+    about: 'About me',
+    contact: 'Contact',
+  },
+}
 
 export default function Portfolio() {
+  const { language } = useLanguage()
+  const text = footerTexts[language]
+
   const [selected, setSelected] = useState<Project | null>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
 
@@ -73,12 +94,12 @@ export default function Portfolio() {
 
       <footer>
         <span>ERS©</span>
-        <span>Desarrollador · México</span>
+        <span>{text.role}</span>
 
-        <nav aria-label="Navegación del pie">
-          <a href="#proyectos">Proyectos</a>
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#contacto">Contacto</a>
+        <nav aria-label={text.navigation}>
+          <a href="#proyectos">{text.projects}</a>
+          <a href="#sobre-mi">{text.about}</a>
+          <a href="#contacto">{text.contact}</a>
         </nav>
       </footer>
 
