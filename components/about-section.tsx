@@ -18,7 +18,7 @@ export function AboutSection() {
       <div>
         <p className="eyebrow">Sobre mí</p>
         <h2 id="about-title">
-          Curiosidad para aprender Criterio para resolver
+          Curiosidad para aprender. Criterio para resolver.
         </h2>
       </div>
 
@@ -47,7 +47,34 @@ export function AboutSection() {
               <h4>
                 Técnico en Soporte y Mantenimiento de Equipo de Cómputo
               </h4>
-              <p>C.B.T.I.S No.35</p>
+              <p>C.B.T.I.S. No. 35</p>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          className="about-courses"
+          aria-labelledby="about-courses-title"
+        >
+          <h3 id="about-courses-title">Formación complementaria</h3>
+
+          <ul className="about-education-list">
+            <li>
+              <h4>Iniciación al desarrollo con IA</h4>
+              <p>Mouredev · BIG school</p>
+              <p className="about-course-meta">
+                4 horas · 2 de octubre de 2026
+              </p>
+
+              <a
+                className="text-link"
+                href="/iniciacion-desarrollo-ia.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver certificado de asistencia al curso de iniciación al desarrollo con IA"
+              >
+                Ver certificado <ArrowUpRight aria-hidden="true" />
+              </a>
             </li>
           </ul>
         </div>
@@ -102,5 +129,4 @@ export function AboutSection() {
       </div>
     </section>
   )
-  
 }

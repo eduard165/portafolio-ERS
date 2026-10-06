@@ -1,0 +1,27 @@
+.reveal {
+  transition:
+    opacity 800ms ease,
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal[data-reveal-state='pending'] {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.reveal[data-reveal-state='visible'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+
+  .reveal[data-reveal-state='pending'],
+  .reveal[data-reveal-state='visible'] {
+    opacity: 1;
+    transform: none;
+  }
+}
