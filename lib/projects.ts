@@ -7,7 +7,6 @@ type ProjectTranslation = {
   technologies?: string[]
   imageAlts?: string[]
 }
-
 export type Project = {
   id: string
   title: string
@@ -28,9 +27,9 @@ export type Project = {
   status?: 'En desarrollo'
   siteUrl?: string
   repositoryUrl?: string
+  featured?: boolean
   en?: ProjectTranslation
 }
-
 export const projects: Project[] = [
   {
     id: 'campo-negro',
@@ -91,6 +90,115 @@ export const projects: Project[] = [
         'Mezcal production process section',
         'Contact section',
       ],
+    },
+  },
+  {
+    id: 'bolita-food',
+    siteUrl: 'https://administrador-bolita-food.vercel.app/',
+    title: 'Bolita Food',
+    category: 'Aplicación web · Proyecto para cliente',
+    summary:
+      'Administrador de pedidos diseñado para la operación diaria de un negocio familiar de comida.',
+    description:
+      'Aplicación en desarrollo para Bolita Food, un negocio familiar de comida en Tlacotalpan, Veracruz. Permite registrar pedidos manualmente, seleccionar productos, distribuir piezas por sabor, agregar extras y calcular el total. Contempla entrega a domicilio o recolección, cálculo de cambio, revisión de disponibilidad y tiempo estimado de preparación. La etapa actual funciona como un prototipo de frontend con almacenamiento local en el navegador; el backend, la autenticación, la sincronización entre dispositivos y la integración con WhatsApp están pendientes.',
+    contribution:
+      'Reorganización de la base inicial generada con v0, adaptación visual a la marca e implementación del registro de pedidos, las validaciones de piezas y sabores, el cálculo de importes y la persistencia local.',
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Base UI',
+      'Lucide',
+      'localStorage',
+    ],
+    kind: 'software',
+    visual: 'documentos',
+    featured: true,
+    status: 'En desarrollo',
+    images: [
+      {
+        src: '/projects/bolita_food/01-bolita-food-pedidos.png',
+        alt: 'Pantalla de gestion de pedidos',
+      },
+      {
+        src: '/projects/bolita_food/02-bolita-food-menu.png',
+        alt: 'Pantalla de gestion del menu y productos',
+      },
+      {
+        src: '/projects/bolita_food/03-bolita-food-negocio.png',
+        alt: 'Pantalla de gestion del negocio',
+      },
+      {
+        src: '/projects/bolita_food/04-bolita-food-conversaciones.png', 
+        alt: 'Pantalla de gestion de conversaciones', 
+      },
+    ],
+    repositoryUrl: 'https://github.com/eduard165/administrador-bolita-food',
+    en: {
+      category: 'Web application · Client project',
+      summary:
+        'An order management application designed for the daily operations of a family food business.',
+      description:
+        'An application under development for Bolita Food, a family food business in Tlacotalpan, Veracruz. It supports manual order entry, product selection, allocating pieces by flavor, adding extras, and calculating totals. It includes delivery or pickup details, cash change calculations, availability checks, and estimated preparation times. The current stage is a frontend prototype with browser-based local storage. Backend services, authentication, cross-device synchronization, and WhatsApp integration are planned for future stages.',
+      contribution:
+        'Reorganization of the initial v0-generated codebase, adaptation to the brand’s visual identity, and implementation of order entry, piece and flavor validation, total calculations, and local persistence.',
+    },
+  },
+  {
+    id: 'ganaderia-don-pedro',
+    siteUrl: 'https://ganaderia-don-pedro.vercel.app/',
+    title: 'Ganadería Don Pedro',
+    category: 'Sitio web · Proyecto para cliente',
+    summary:
+      'Sitio web con páginas independientes, catálogo interactivo de ejemplares y formulario de contacto para una ganadería con historia desde 1940.',
+    description:
+      'Sitio web en desarrollo para Ganadería Don Pedro, en Tlacotalpan, Veracruz. Organiza la presentación de la ganadería en páginas de inicio, historia, genética y ejemplares. Incluye un catálogo con filtros y detalles en ventanas modales, presentación de las razas Gyr y Sardo Negro, preguntas frecuentes, acceso a WhatsApp y un formulario con asuntos predefinidos y validación en cliente y servidor. Las consultas se envían mediante SMTP con Nodemailer; la configuración y la entrega a un buzón real en producción están pendientes. El catálogo utiliza registros de ejemplo e imágenes ilustrativas generadas, que deberán sustituirse por material validado con la ganadería. Actualmente se administra desde el código.',
+    contribution:
+      'Desarrollo de la estructura multipágina, componentes compartidos, catálogo interactivo, API de consulta, formulario validado e integración de correo mediante SMTP, con adaptación para escritorio y móvil.',
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'CSS',
+      'Nodemailer',
+      'SMTP',
+    ],
+    kind: 'website',
+    visual: 'ganaderia',
+    featured: true,
+    status: 'En desarrollo',
+    images: [
+      {
+        src: '/projects/ganaderia_don_pedro/01-don-pedro-inicio (3).png',
+        alt: 'Pantalla de inicio del sitio Ganadería Don Pedro',
+      },
+      {
+        src: '/projects/ganaderia_don_pedro/02-don-pedro-historia (2).png',
+        alt: 'Pantalla de historia de la ganadería',
+      },
+      {
+        src: '/projects/ganaderia_don_pedro/03-don-pedro-genetica (2).png',
+        alt: 'Pantalla de genética de la ganadería',
+      },
+      {
+        src: '/projects/ganaderia_don_pedro/04-don-pedro-catalogo-detalle (2).png',
+        alt: 'Pantalla de catálogo con ventana modal de detalle de ejemplar', 
+      },
+       {
+        src: '/projects/ganaderia_don_pedro/05-don-pedro-contacto (2).png',
+        alt: 'Pantalla de contacto con formulario y WhatsApp', 
+      },
+    ],
+    repositoryUrl: 'https://github.com/eduard165/ganaderia-don-pedro',
+    en: {
+      category: 'Website · Client project',
+      summary:
+        'A multipage website with an interactive cattle catalog and contact form for a ranch with a history dating back to 1940.',
+      description:
+        'A website under development for Ganadería Don Pedro in Tlacotalpan, Veracruz. It presents the ranch through dedicated home, history, genetics, and cattle catalog pages. Features include catalog filters, modal detail views, information about Gyr and Sardo Negro breeds, FAQs, WhatsApp access, and a contact form with predefined subjects and client-side and server-side validation. Inquiries are sent through SMTP using Nodemailer; production configuration and delivery to a real mailbox are pending. The catalog currently uses sample records and generated illustrative images that must be replaced with material approved by the ranch. Catalog data is currently maintained in the codebase.',
+      contribution:
+        'Development of the multipage structure, shared components, interactive catalog, catalog API, validated contact form, and SMTP email integration, with layouts adapted for desktop and mobile.',
     },
   },
   {
@@ -271,15 +379,12 @@ export const projects: Project[] = [
     },
   },
 ]
-
 export const websiteProjects = projects.filter(
-  (project) => project.kind === 'website',
+  (project) => project.kind === 'website' || project.featured === true,
 )
-
 export const softwareProjects = projects.filter(
-  (project) => project.kind === 'software',
+  (project) => project.kind === 'software' && !project.featured,
 )
-
 /* Devuelve los datos del proyecto en el idioma seleccionado. */
 export function getLocalizedProject(
   project: Project,
@@ -288,9 +393,7 @@ export function getLocalizedProject(
   if (language === 'es' || !project.en) {
     return project
   }
-
   const translation = project.en
-
   return {
     ...project,
     title: translation.title ?? project.title,
