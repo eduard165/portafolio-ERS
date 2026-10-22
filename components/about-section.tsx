@@ -60,7 +60,7 @@ englishDetails:
     certificateLabel:
       'View the attendance certificate for the Introduction to AI-Assisted Development course',
     cv: 'Download résumé',
-    cvUrl: '/cv-eduardo-rodriguez-en.pdf',
+    cvUrl: '/cv-Eduardo-Rodriguez-en.pdf',
     skillsLabel: 'Technologies and tools',
     databases: 'Databases',
     mobile: 'Mobile',
