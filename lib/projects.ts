@@ -7,6 +7,7 @@ type ProjectTranslation = {
   technologies?: string[]
   imageAlts?: string[]
 }
+
 export type Project = {
   id: string
   title: string
@@ -30,6 +31,7 @@ export type Project = {
   featured?: boolean
   en?: ProjectTranslation
 }
+
 export const projects: Project[] = [
   {
     id: 'campo-negro',
@@ -71,8 +73,7 @@ export const projects: Project[] = [
         alt: 'Sección Contacto',
       },
     ],
-    repositoryUrl:
-      'https://github.com/eduard165/campo-negro-web.git',
+    repositoryUrl: 'https://github.com/eduard165/campo-negro-web.git',
     siteUrl: 'https://campo-negro-web.vercel.app/',
     en: {
       category: 'Website · Campo Negro',
@@ -119,22 +120,23 @@ export const projects: Project[] = [
     images: [
       {
         src: '/projects/bolita_food/01-bolita-food-pedidos.png',
-        alt: 'Pantalla de gestion de pedidos',
+        alt: 'Pantalla de gestión de pedidos',
       },
       {
         src: '/projects/bolita_food/02-bolita-food-menu.png',
-        alt: 'Pantalla de gestion del menu y productos',
+        alt: 'Pantalla de gestión del menú y productos',
       },
       {
         src: '/projects/bolita_food/03-bolita-food-negocio.png',
-        alt: 'Pantalla de gestion del negocio',
+        alt: 'Pantalla de gestión del negocio',
       },
       {
-        src: '/projects/bolita_food/04-bolita-food-conversaciones.png', 
-        alt: 'Pantalla de gestion de conversaciones', 
+        src: '/projects/bolita_food/04-bolita-food-conversaciones.png',
+        alt: 'Pantalla de gestión de conversaciones',
       },
     ],
-    repositoryUrl: 'https://github.com/eduard165/administrador-bolita-food',
+    repositoryUrl:
+      'https://github.com/eduard165/administrador-bolita-food',
     en: {
       category: 'Web application · Client project',
       summary:
@@ -143,6 +145,12 @@ export const projects: Project[] = [
         'An application under development for Bolita Food, a family food business in Tlacotalpan, Veracruz. It supports manual order entry, product selection, allocating pieces by flavor, adding extras, and calculating totals. It includes delivery or pickup details, cash change calculations, availability checks, and estimated preparation times. The current stage is a frontend prototype with browser-based local storage. Backend services, authentication, cross-device synchronization, and WhatsApp integration are planned for future stages.',
       contribution:
         'Reorganization of the initial v0-generated codebase, adaptation to the brand’s visual identity, and implementation of order entry, piece and flavor validation, total calculations, and local persistence.',
+      imageAlts: [
+        'Order management screen',
+        'Menu and product management screen',
+        'Business settings screen',
+        'Conversation management screen',
+      ],
     },
   },
   {
@@ -183,11 +191,11 @@ export const projects: Project[] = [
       },
       {
         src: '/projects/ganaderia_don_pedro/04-don-pedro-catalogo-detalle (2).png',
-        alt: 'Pantalla de catálogo con ventana modal de detalle de ejemplar', 
+        alt: 'Pantalla de catálogo con ventana modal de detalle de ejemplar',
       },
-       {
+      {
         src: '/projects/ganaderia_don_pedro/05-don-pedro-contacto (2).png',
-        alt: 'Pantalla de contacto con formulario y WhatsApp', 
+        alt: 'Pantalla de contacto con formulario y WhatsApp',
       },
     ],
     repositoryUrl: 'https://github.com/eduard165/ganaderia-don-pedro',
@@ -199,6 +207,13 @@ export const projects: Project[] = [
         'A website under development for Ganadería Don Pedro in Tlacotalpan, Veracruz. It presents the ranch through dedicated home, history, genetics, and cattle catalog pages. Features include catalog filters, modal detail views, information about Gyr and Sardo Negro breeds, FAQs, WhatsApp access, and a contact form with predefined subjects and client-side and server-side validation. Inquiries are sent through SMTP using Nodemailer; production configuration and delivery to a real mailbox are pending. The catalog currently uses sample records and generated illustrative images that must be replaced with material approved by the ranch. Catalog data is currently maintained in the codebase.',
       contribution:
         'Development of the multipage structure, shared components, interactive catalog, catalog API, validated contact form, and SMTP email integration, with layouts adapted for desktop and mobile.',
+      imageAlts: [
+        'Ganadería Don Pedro homepage',
+        'Ranch history page',
+        'Ranch genetics page',
+        'Cattle catalog with an animal detail modal',
+        'Contact section with a form and WhatsApp access',
+      ],
     },
   },
   {
@@ -270,9 +285,9 @@ export const projects: Project[] = [
     ],
     kind: 'software',
     visual: 'documentos',
-    repositoryUrl:
-      'https://github.com/eduard165/ArchivoInterno-SDI',
+    repositoryUrl: 'https://github.com/eduard165/ArchivoInterno-SDI',
     en: {
+      title: 'Internal Records Management · SDI',
       category: 'Web application · Document management',
       summary:
         'Registration, organization, and retrieval of audit documents with institutional access and SharePoint integration.',
@@ -302,8 +317,7 @@ export const projects: Project[] = [
     ],
     kind: 'software',
     visual: 'documentos',
-    repositoryUrl:
-      'https://github.com/eduard165/movies-api-fastapi',
+    repositoryUrl: 'https://github.com/eduard165/movies-api-fastapi',
     en: {
       category: 'Backend · REST API',
       summary:
@@ -379,13 +393,15 @@ export const projects: Project[] = [
     },
   },
 ]
+
 export const websiteProjects = projects.filter(
   (project) => project.kind === 'website' || project.featured === true,
 )
+
 export const softwareProjects = projects.filter(
   (project) => project.kind === 'software' && !project.featured,
 )
-/* Devuelve los datos del proyecto en el idioma seleccionado. */
+
 export function getLocalizedProject(
   project: Project,
   language: 'es' | 'en',
@@ -393,7 +409,9 @@ export function getLocalizedProject(
   if (language === 'es' || !project.en) {
     return project
   }
+
   const translation = project.en
+
   return {
     ...project,
     title: translation.title ?? project.title,

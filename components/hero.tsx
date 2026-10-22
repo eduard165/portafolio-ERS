@@ -5,7 +5,7 @@ import { useLanguage } from './language-provider'
 
 const heroTexts = {
   es: {
-    role: 'Desarrollador full stack',
+    role: 'Lic. en Tecnologías Computacionales',
     statement: 'Soluciones digitales',
     statementEnd: 'con propósito.',
     description:
@@ -19,7 +19,7 @@ const heroTexts = {
     ],
   },
   en: {
-    role: 'Full Stack Developer',
+    role: 'lic. in Computer Technologies',
     statement: 'Digital solutions',
     statementEnd: 'with purpose.',
     description:

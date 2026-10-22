@@ -15,14 +15,14 @@ import { useLanguage } from './language-provider'
 
 const footerTexts = {
   es: {
-    role: 'Desarrollador · México',
+    role: 'Lic. en Tecnologías Computacionales · México',
     navigation: 'Navegación del pie',
     projects: 'Proyectos',
     about: 'Sobre mí',
     contact: 'Contacto',
   },
   en: {
-    role: 'Developer · Mexico',
+    role: 'lic. in Computer Technologies · Mexico',
     navigation: 'Footer navigation',
     projects: 'Projects',
     about: 'About me',

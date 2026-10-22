@@ -21,6 +21,10 @@ const aboutTexts = {
     degree: 'Licenciatura en Tecnologías Computacionales',
     technicalDegree:
       'Técnico en Soporte y Mantenimiento de Equipo de Cómputo',
+    languages: 'Idiomas',
+    english: 'Inglés · B2 (intermedio alto)',
+englishDetails:
+  'Tres años de formación en inglés, desde básico inicial hasta avanzado, en el Centro de Capacitación para el Trabajo Industrial No. 159 (CECATI 159), Tlacotalpan, Veracruz. Sin certificación oficial de nivel B2.',
     courses: 'Formación complementaria',
     course: 'Iniciación al desarrollo con IA',
     courseDetails: '4 horas · 2 de octubre de 2026',
@@ -45,6 +49,10 @@ const aboutTexts = {
     degree: 'Bachelor’s Degree in Computer Technologies',
     technicalDegree:
       'Technical Diploma in Computer Support and Maintenance',
+    languages: 'Languages',
+    english: 'English · B2 (upper-intermediate)',
+englishDetails:
+  'Three years of English language training, from beginner to advanced, at Centro de Capacitación para el Trabajo Industrial No. 159 (CECATI 159) in Tlacotalpan, Veracruz. No official B2 proficiency certification.',
     courses: 'Additional training',
     course: 'Introduction to AI-Assisted Development',
     courseDetails: '4 hours · October 2, 2026',
@@ -100,6 +108,20 @@ export function AboutSection() {
         </div>
 
         <div
+          className="about-education"
+          aria-labelledby="about-languages-title"
+        >
+          <h3 id="about-languages-title">{text.languages}</h3>
+
+          <ul className="about-education-list">
+            <li>
+              <h4>{text.english}</h4>
+              <p>{text.englishDetails}</p>
+            </li>
+          </ul>
+        </div>
+
+        <div
           className="about-courses"
           aria-labelledby="about-courses-title"
         >
@@ -128,26 +150,19 @@ export function AboutSection() {
           </ul>
         </div>
 
-        <a
-          className="text-link"
-          href={text.cvUrl}
-          download
-        >
+        <a className="text-link" href={text.cvUrl} download>
           {text.cv}
           <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
 
-      <div
-        className="skills-grid"
-        aria-label={text.skillsLabel}
-      >
+      <div className="skills-grid" aria-label={text.skillsLabel}>
         <div>
           <Code2 aria-hidden="true" />
           <h3>Frontend</h3>
           <p>
-            HTML · CSS · JavaScript · TypeScript · React · Next.js ·
-            Tailwind CSS
+            HTML  ·  CSS ·  JavaScript  ·  TypeScript  ·  React  ·  Next.js 
+            ·  Tailwind CSS
           </p>
         </div>
 
@@ -181,7 +196,7 @@ export function AboutSection() {
         <div>
           <Wrench aria-hidden="true" />
           <h3>{text.tools}</h3>
-          <p>Git · GitHub · Docker · Azure · Vercel</p>
+          <p>Git · GitHub · Docker · Azure · Vercel ·  Postman ·  Jira</p>
         </div>
       </div>
     </section>
